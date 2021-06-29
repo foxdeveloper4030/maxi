@@ -261,7 +261,7 @@ class ProductController extends Controller
             }
             if ($exist == false) {
                 if ($count > 0) {
-                    array_push($newcart, ['product_id' => $product->id, 'count' => 1, 'price' => $product->price_main]);
+                    array_push($newcart, ['product_id' => $product->id, 'count' => 1, 'price' => $product->price_main,'price_one'=>$product->price_main]);
                     $state = true;
                 } else $state = false;
 
