@@ -176,7 +176,7 @@
                                     @if($count!=0)
                                         <div class="price-value">
                                             <span>{{number_format($price)}}</span>
-                                            <span class="price-currency">تومان44</span>
+                                            <span class="price-currency">تومان</span>
                                         </div>
                                     @else
                                         <div class="price-value">

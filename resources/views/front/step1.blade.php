@@ -448,7 +448,7 @@
 
             $.get("{{route('order.add')}}/" + id, function (data, status) {
                 document.getElementById('pricep').innerHTML = data['price'];
-                document.getElementById('pprice0').innerHTML = data['price'];
+                document.getElementById('pprice0').innerHTML = data['cariar_price']
                 document.getElementById('buttonp').style.display = 'block';
                 document.getElementById('textp').innerHTML = data['text'] + '<br><lable>هزینه ارسال:</lable>' + data['cariar_price'] + '  ' + 'تومان';
             });

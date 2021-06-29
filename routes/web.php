@@ -479,7 +479,7 @@ Route::get('productparameters/{product}/{parameters}', function ($product, $para
             // $url=(new PublicModel())->image_Atrbute($attribute->id);
             if ($count < 1) {
                 $product_btn = '   <a style="cursor: not-allowed" class="dk-btn dk-btn-danger">
-                اتمام موجودی44
+                اتمام موجودی
                 <i class="now-ui-icons show-less"></i>
             </a>';
             } else {
@@ -593,7 +593,7 @@ Route::get('addtocart/{product}',function ($product){
 
             if ($count > 0) {
 
-                array_push($newcart, ['product_id' => $product->id, 'count' => 1, 'price' => $price+$product->price_main,'product_color'=>$product_color,'warranty'=>$product_warranty]);
+                array_push($newcart, ['product_id' => $product->id, 'count' => 1, 'price_one'=>$price+$product->price_main,'price_one_off'=>0,'price' => $price+$product->price_main,'product_color'=>$product_color,'warranty'=>$product_warranty]);
                 $state = true;
             } else $state = false;
 
@@ -602,7 +602,7 @@ Route::get('addtocart/{product}',function ($product){
         foreach ($newcart as $cart1){
             $cart1['price_off']=0;
             if (Product::query()->find($cart1['product_id'])->specil!=null){
-
+                $cart1['price_one_off']=(Product::query()->find($cart1['product_id'])->specil->price_off);
                 $cart1['price_off']=($cart1['count']*(Product::query()->find($cart1['product_id'])->specil->price_off));
                 $cart1['price']=$cart1['price']-$cart1['price_off'];
             }
@@ -852,5 +852,5 @@ PublicModel::SendSms1('09162537582','text');
 });
 
 Route::get('test',function(){
-  return session('card');
+  return session('cart');
 });

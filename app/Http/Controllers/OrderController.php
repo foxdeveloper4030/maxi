@@ -133,8 +133,11 @@ class OrderController extends Controller
                 $card->warranty_id =0;
                 if (isset($c['product_color']))
                     $card->color_id = $c['product_color'];
-                if (isset($c['warranty']))
+                if (isset($c['warranty'])){
                     $card->warranty_id = $c['warranty'];
+
+                }
+
                 $card->order_id = $order->id;
 
 
