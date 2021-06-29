@@ -322,7 +322,9 @@
                                     </li>
                                     <li>
                                         <span>هزینه ارسال</span>
-                                        <span>وابسته به آدرس<span class="wiki wiki-holder"><span
+                                        <span>
+                                            <span id="pprice0">حامل را انتخاب کنید!</span>
+                                            <span class="wiki wiki-holder"><span
                                                     class="wiki-sign"></span>
                                                     <div class="wiki-container js-dk-wiki is-right">
                                                         <div class="wiki-arrow"></div>
@@ -338,7 +340,8 @@
                                                             باشد."
                                                         </p>
                                                     </div>
-                                                </span></span>
+                                            </span>
+                                        </span>
                                     </li>
                                 </ul>
                                 <div class="checkout-summary-devider">
@@ -445,6 +448,7 @@
 
             $.get("{{route('order.add')}}/" + id, function (data, status) {
                 document.getElementById('pricep').innerHTML = data['price'];
+                document.getElementById('pprice0').innerHTML = data['price'];
                 document.getElementById('buttonp').style.display = 'block';
                 document.getElementById('textp').innerHTML = data['text'] + '<br><lable>هزینه ارسال:</lable>' + data['cariar_price'] + '  ' + 'تومان';
             });
