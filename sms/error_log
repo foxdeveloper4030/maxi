@@ -1,0 +1,11 @@
+[24-Jun-2021 14:45:14 UTC] PHP Fatal error:  Uncaught SoapFault exception: [WSDL] SOAP-ERROR: Parsing Schema: can't import schema from 'http://payamak-service.ir/SendService.svc?xsd=xsd0' in /home2/maximors/public_html/sms/adsfgsdfhjghkjlfhjhjgfgdjhggffddmnbvcxyhgfdshgfdds.php:3
+Stack trace:
+#0 /home2/maximors/public_html/sms/adsfgsdfhjghkjlfhjhjgfgdjhggffddmnbvcxyhgfdshgfdds.php(3): SoapClient->SoapClient('http://payamak-...', Array)
+#1 {main}
+  thrown in /home2/maximors/public_html/sms/adsfgsdfhjghkjlfhjhjgfgdjhggffddmnbvcxyhgfdshgfdds.php on line 3
+[29-Jun-2021 09:05:23 UTC] PHP Fatal error:  Uncaught SoapFault exception: [WSDL] SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://payamak-service.ir/SendService.svc?wsdl' : failed to load external entity "http://payamak-service.ir/SendService.svc?wsdl"
+ in /home2/maximors/public_html/sms/adsfgsdfhjghkjlfhjhjgfgdjhggffddmnbvcxyhgfdshgfdds.php:3
+Stack trace:
+#0 /home2/maximors/public_html/sms/adsfgsdfhjghkjlfhjhjgfgdjhggffddmnbvcxyhgfdshgfdds.php(3): SoapClient->SoapClient('http://payamak-...', Array)
+#1 {main}
+  thrown in /home2/maximors/public_html/sms/adsfgsdfhjghkjlfhjhjgfgdjhggffddmnbvcxyhgfdshgfdds.php on line 3
