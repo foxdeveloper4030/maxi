@@ -853,6 +853,5 @@ PublicModel::SendSms1('09162537582','text');
 });
 
 Route::get('test',function(){
-    return session('aaa');
   return session('cart');
 });
