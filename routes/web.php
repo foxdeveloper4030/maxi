@@ -528,7 +528,8 @@ Route::get('selectwarranty/{product}/{warranty}',function ($product,$warranty){
 })->name('select-warranty');
 //color type=1
 Route::get('addtocart/{product}',function ($product){
-
+  session('aaa',1);
+   session(['aaa'=>session('aaa')+1]);
     $product=Product::query()->find($product);
     if ($product!=null){
         $product_color=0;
