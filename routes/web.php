@@ -594,7 +594,7 @@ Route::get('addtocart/{product}',function ($product){
 
             if ($count > 0) {
 
-                array_push($newcart, ['product_id' => $product->id, 'count' => 1, 'price_one'=>$price+$product->price_main,'price_one_off'=>0,'price' => $price+$product->price_main,'product_color'=>$product_color,'warranty'=>$product_warranty,'g'=>'fff']);
+                array_push($newcart, ['product_id' => $product->id, 'count' => 1, 'price_one'=>$price+$product->price_main,'price_one_off'=>0,'price' => $price+$product->price_main,'product_color'=>$product_color,'warranty'=>$product_warranty]);
                 $state = true;
             } else $state = false;
 

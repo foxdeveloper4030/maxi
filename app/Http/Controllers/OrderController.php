@@ -126,11 +126,13 @@ class OrderController extends Controller
             foreach (session('cart') as $c) {
                 $card = new Card();
                 $card->user_id = $this->user->id;
-                $card->price = $this->price;
+                $card->price = $c['price'];
                 $card->count = $c['count'];
                 $card->product_id = $c['product_id'];
                 $card->color_id = 0;
                 $card->warranty_id =0;
+                $card->price_one_off=$c['price_one_off'];
+                $card->price_one=$c['price_one'];
                 if (isset($c['product_color']))
                     $card->color_id = $c['product_color'];
                 if (isset($c['warranty'])){
