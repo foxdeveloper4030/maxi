@@ -261,7 +261,7 @@ class ProductController extends Controller
             }
             if ($exist == false) {
                 if ($count > 0) {
-                    array_push($newcart, ['product_id' => $product->id, 'count' => 1, 'price' => $product->price_main,'price_one'=>$product->price_main,'price_off'=>0,'price_one_off'=>0]);
+                    array_push($newcart, ['product_id' => $product->id, 'count' => 1, 'price' => $product->price_main,'price_one'=>$product->price_main+0,'price_off'=>0+0,'price_one_off'=>0+0]);
                     $state = true;
                 } else $state = false;
 
