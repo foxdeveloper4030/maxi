@@ -261,11 +261,22 @@ class ProductController extends Controller
             }
             if ($exist == false) {
                 if ($count > 0) {
-                    array_push($newcart, ['product_id' => $product->id, 'count' => 1, 'price' => $product->price_main,'price_one'=>$product->price_main]);
+                    array_push($newcart, ['product_id' => $product->id, 'count' => 1, 'price' => $product->price_main,'price_one'=>$product->price_main,'price_off'=>0,'price_one_off'=>0]);
                     $state = true;
                 } else $state = false;
 
             }
+            $newcart1=array();
+            foreach ($newcart as $cart1){
+                $cart1['price_off']=0;
+                if (Product::query()->find($cart1['product_id'])->specil!=null){
+                    $cart1['price_one_off']=(Product::query()->find($cart1['product_id'])->specil->price_off);
+                    $cart1['price_off']=($cart1['count']*(Product::query()->find($cart1['product_id'])->specil->price_off));
+                    $cart1['price']=$cart1['price']-$cart1['price_off'];
+                }
+                array_push($newcart1,$cart1);
+            }
+
 
             session(['cart' => $newcart]);
             return ['cart' => 1, 'state' => ['status' => $state, 'text' => "ممم"]];
