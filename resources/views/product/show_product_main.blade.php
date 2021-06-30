@@ -200,7 +200,7 @@
                                     <div class="parent-btn">
                                         @if($count!=0)
                                             <button onclick="simplecart()" class="dk-btn dk-btn-info">
-                                              1  افزودن به سبد خرید
+                                                افزودن به سبد خرید
                                                 <i class="now-ui-icons shopping_cart-simple"></i>
                                             </button>
                                         @else
