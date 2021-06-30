@@ -602,10 +602,11 @@ Route::get('addtocart/{product}',function ($product){
         $newcart1=array();
         foreach ($newcart as $cart1){
             $cart1['price_off']=0;
+            $cart1['price']=($cart1['price_one']*$cart1['count']);
             if (Product::query()->find($cart1['product_id'])->specil!=null){
                 $cart1['price_one_off']=(Product::query()->find($cart1['product_id'])->specil->price_off);
                 $cart1['price_off']=($cart1['count']*(Product::query()->find($cart1['product_id'])->specil->price_off));
-                $cart1['price']=$cart1['price']-$cart1['price_off'];
+                $cart1['price']=($cart1['price_one']*$cart1['count'])-$cart1['price_off'];
             }
             array_push($newcart1,$cart1);
         }
