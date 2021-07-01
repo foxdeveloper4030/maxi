@@ -171,12 +171,15 @@ class OrderController extends Controller
         $price = $order->price;
         $cariar_price = 0;
         if ($cariar->free != 0) {
-            if ($cariar->free < $order->price) {
+            if ($cariar->free > $order->price) {
                 $price += $cariar->price;
                 $cariar_price = $cariar->price;
             }
 
         }
+        else
+            $cariar_price = $cariar->price;
+
         $text = '
 بازه تحویل سفارش: زمان تقریبی تحویل از ';
         $text .= (new Date())->jdate('j', time() + 3600 * $cariar->time_low);
