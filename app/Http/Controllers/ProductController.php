@@ -228,6 +228,7 @@ class ProductController extends Controller
             foreach (session('cart') as $item) {
                 if ($index!=$i)
                     array_push($cart1,$item);
+                $i++;
             }
             session(['cart'=>$cart1]);
             return ['cart' => 1, 'state' => ['status' => true, 'text' => "ممم"]];
