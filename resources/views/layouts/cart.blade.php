@@ -39,6 +39,7 @@
                                 <button class="basket-item-remove" onclick="delete_cart('{{$cart_index}}')"></button>
 
                             @endif
+                            <?php $cart_index+=1; ?>
                             <div class="basket-item-image">
 
                                 <img alt="" src="{{(new App\PublicModel())->image_cover(App\Product::query()->find($cart["product_id"]))}}">
