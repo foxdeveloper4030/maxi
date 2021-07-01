@@ -510,8 +510,8 @@ Route::get('view/{attr_id}/{price}/{count}', function ($attr_id, $price, $count)
     return view('layouts.attr_select', ['price' => $price, 'attr_id' => $attr_id, 'count' => $count, 'product' => $product]);
 });
 Route::post('simplecart', 'ProductController@simpelcart')->name('simpelcart');
-Route::post('deletecart', 'ProductController@delete_cart')->name('deletecart');
-Route::post('deletecart/{index}', 'ProductController@delete_cart');
+Route::get('deletecart', 'ProductController@delete_cart')->name('deletecart');
+Route::get('deletecart/{index}', 'ProductController@delete_cart');
 
 Route::get('delet-multicart',function ($item){
 
