@@ -253,7 +253,7 @@
                         </div>
                         <div class="checkout-shipment posts">
                             @foreach(\App\Cariar::query()->where('active','=',1)->get() as $cariar)
-                                <div class="radiobtn">
+                                <div class="">
                                     <input type="radio" id="radio{{$cariar->id}}"
                                            name="carrierId" onclick="load('{{$cariar->id}}')"
                                            value="{{$cariar->id}}"/>
