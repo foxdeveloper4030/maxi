@@ -27,16 +27,16 @@
             </a>
         </div>
         <ul class="basket-list">
-
+                     <?php $cart_index=0?>
                         @foreach($allcart as $cart)
                 <li>
                     <a  class="basket-item">
 
                         <div class="basket-item-content">
                             @if(isset($cart["attr_id"]))
-                            <button class="basket-item-remove" onclick="delete_cart_multy('{{$cart["product_id"]}}','{{$cart["attr_id"]}}')"></button>
+                            <button class="basket-item-remove" onclick="delete_cart('{{$cart_index}}')"></button>
                             @else
-                                <button class="basket-item-remove" onclick="delete_cart('{{$cart["product_id"]}}')"></button>
+                                <button class="basket-item-remove" onclick="delete_cart('{{$cart_index}}')"></button>
 
                             @endif
                             <div class="basket-item-image">

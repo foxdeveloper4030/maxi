@@ -510,6 +510,8 @@ Route::get('view/{attr_id}/{price}/{count}', function ($attr_id, $price, $count)
     return view('layouts.attr_select', ['price' => $price, 'attr_id' => $attr_id, 'count' => $count, 'product' => $product]);
 });
 Route::post('simplecart', 'ProductController@simpelcart')->name('simpelcart');
+Route::post('deletecart', 'ProductController@delete_cart')->name('deletecart');
+Route::post('deletecart/{index}', 'ProductController@delete_cart');
 
 Route::get('delet-multicart',function ($item){
 
@@ -528,8 +530,7 @@ Route::get('selectwarranty/{product}/{warranty}',function ($product,$warranty){
 })->name('select-warranty');
 //color type=1
 Route::get('addtocart/{product}',function ($product){
-  session('aaa',1);
-   session(['aaa'=>session('aaa')+1]);
+
     $product=Product::query()->find($product);
     if ($product!=null){
         $product_color=0;

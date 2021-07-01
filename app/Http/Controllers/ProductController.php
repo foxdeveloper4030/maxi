@@ -13,6 +13,7 @@ use App\Product_Attribute;
 use App\Product_Attribute_Combination;
 use App\PublicModel;
 use App\Setting;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -218,6 +219,19 @@ class ProductController extends Controller
 
         $data = ["attr_id" => $attr_id, 'url' => (new PublicModel())->image_Atrbute($attr_id), 'count' => $count, 'price' => $price];
         return $data;
+    }
+
+    function delete_cart($index){
+        if (session()->has('cart')){
+            $cart1=array();
+            $i=0;
+            foreach (session('cart') as $item) {
+                if ($index!=$i)
+                    array_push($cart1,$item);
+            }
+            session(['cart'=>$cart1]);
+            return ['cart' => 1, 'state' => ['status' => true, 'text' => "ممم"]];
+        }
     }
 
     public function simpelcart(Request $request)

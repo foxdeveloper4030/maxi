@@ -327,12 +327,7 @@
     function delete_cart(id) {
         $(document).ready(function () {
             loader_show();
-            $.post("{{route('simpelcart')}}",
-                {
-                    _token: "{{csrf_token()}}",
-                    id:id,
-                    count:-1
-                },
+            $.get("{{route('deletecart')}}/"+id,
                 function (data, status) {
                     loader_dismis();
 
