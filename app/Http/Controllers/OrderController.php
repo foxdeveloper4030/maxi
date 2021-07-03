@@ -226,9 +226,9 @@ class OrderController extends Controller
 
 
 
-                $key="lSpziaoJgjwlqFyeem8YtejNfCO9EWEL";
-                $MerchantId="000000140335536";
-                $TerminalId="24092866";
+                $key="8v8AEee8YfZX+wwc1TzfShRgH3O9WOho";
+                $MerchantId="000000140336964";
+                $TerminalId="24095674";
                 //  $Amount=$price; //Rials
                 $Amount=$price;
                 $OrderId=$order->id;
