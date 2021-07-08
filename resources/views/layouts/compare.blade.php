@@ -31,15 +31,15 @@
                             </a>
                         </header>
                         <div class="item">
-                            <a href="{{route('main.product.show',['slug'=>$item->product->slug])}}">
-                                <img style="max-height: 200px" src="{{(new \App\PublicModel())->image_cover($item->product)}}" class="img-fluid" alt="">
+                            <a href="{{route('main.product.show',['slug'=>$product->slug])}}">
+                                <img style="max-height: 200px" src="{{(new \App\PublicModel())->image_cover($product)}}" class="img-fluid" alt="">
                             </a>
                             <p class="post-title small">
-                                <a href="{{route('main.product.show',['slug'=>$item->product->slug])}}">{{$product->name}}</a>
+                                <a href="{{route('main.product.show',['slug'=>$product->slug])}}">{{$product->name}}</a>
                             </p>
 
                             <div class="btn-group">
-                                <a href="{{route('main.product.show',['slug'=>$item->product->slug])}}"><button type="button" class="btn btn-info" style="margin-right: 25%">مشاهده </button>
+                                <a href="{{route('main.product.show',['slug'=>$product->slug])}}"><button type="button" class="btn btn-info" style="margin-right: 25%">مشاهده </button>
                                 </a>
                             </div>
 
