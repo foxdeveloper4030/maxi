@@ -19,7 +19,10 @@
             <tr>
 
                 <th>
-                    @foreach(session('compare') as $product)
+                    @foreach(session('compare') as $pid)
+                        <?php
+                        $product = \App\Product::query()->find($pid);
+                        ?>
                     <div class="widget widget-product card " style="max-width: 200px;">
                         <header class="card-header">
 
