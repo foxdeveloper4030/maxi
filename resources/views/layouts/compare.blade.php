@@ -7,350 +7,535 @@
 @endsection
 
 @section('title')
-    خانه
+    مقایسه
 @endsection
 @section('content')
 
-    <div class="row">
-        <aside class="sidebar col-12 col-lg-3 order-2 order-lg-1">
-            <?php  $select = 'off';
-            if (isset($_GET['select']))
-                if ($_GET['select'] == 'on')
-                    $select = 'on';
-            ?>
-            <div class="widget-suggestion widget card">
-                <div class="box">
-                    <div class="box-content">
-                        @if($select=='on')
-                            <input checked type="checkbox" onchange="selectradio(this)" name="checkbox"
-                                   class="bootstrap-switch"/>
-                        @else
-                            <input type="checkbox" onchange="selectradio(this)" name="checkbox"
-                                   class="bootstrap-switch"/>
-                        @endif
-                        <label for="">فقط کالاهای موجود</label>
-                    </div>
-                </div>
-            </div>
-            <div class="widget-suggestion widget card">
-                <div class="box">
-                    <div class="container">
-
-                        <style>
-                            .slidecontainer {
-                                width: 100%;
-                            }
-
-                            .slider {
-                                -webkit-appearance: none;
-                                width: 100%;
-                                height: 25px;
-                                background: url("{{url('public/img')}}/back2.png");
-                                outline: none;
-                                opacity: 0.7;
-                                -webkit-transition: .2s;
-                                transition: opacity .2s;
-                            }
-
-                            .slider:hover {
-                                opacity: 1;
-                            }
-
-                            .slider::-webkit-slider-thumb {
-                                -webkit-appearance: none;
-                                appearance: none;
-                                width: 25px;
-                                height: 25px;
-                                background: #4CAF50;
-                                cursor: pointer;
-                            }
-
-                            .slider::-moz-range-thumb {
-                                width: 25px;
-                                height: 25px;
-                                border-radius: 10px;
-                                background: tomato;
-                                cursor: pointer;
-                            }
-                        </style>
+    <div class="row mt-5 mb-5">
 
 
-                        <div class="slidecontainer">
+        <table class="table table-striped">
+            <thead>
+            <tr>
 
-                            <p>بیشترین قیمت</p>
-                            <input type="range" id="price_high" min="1" max="1000" value="1000" class="slider"
-                                   onchange="price_filter()">
-                            <p id="demo_high" data-an="1"></p>
-                            <p>کمترین قیمت</p>
-                            <input type="range"  id="price_low" min="1" max="1000" value="1" class="slider"
-                                   onchange="price_filter()">
-                            <p id="demo_low" data-an="1"></p>
-                        </div>
+                <th>
+                    <div class="widget widget-product card " style="max-width: 200px;">
+                        <header class="card-header">
 
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="sidebar-inner default">
-
-                <div class="widget-services widget card">
-                    <div class="row">
-                        <div class="feature-item col-12">
-                            <a href="#" target="_blank">
-                                <img src="{{asset('public/assets/img/svg/return-policy.svg')}}">
+                            <a href="https://khanehmobile.com/compare/delete/2356"><i class="fa fa-remove"></i></a></header>
+                        <div class="item">
+                            <a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C">
+                                <img style="max-height: 200px" src="/public/img/p/1/2/3/9/7/12397.jpg" class="img-fluid" alt="">
                             </a>
-                            <p>ضمانت برگشت</p>
-                        </div>
-                        <div class="feature-item col-6">
-                            <a href="#" target="_blank">
-                                <img src="{{asset('public/assets/img/svg/payment-terms.svg')}}">
-                            </a>
-                            <p>پرداخت درمحل</p>
-                        </div>
-                        <div class="feature-item col-6">
-                            <a href="#" target="_blank">
-                                <img src="{{asset('public/assets/img/svg/delivery.svg')}}">
-                            </a>
-                            <p>تحویل اکسپرس</p>
-                        </div>
-                        <div class="feature-item col-6">
-                            <a href="#" target="_blank">
-                                <img src="{{asset('public/assets/img/svg/origin-guarantee.svg')}}">
-                            </a>
-                            <p>تضمین بهترین قیمت</p>
-                        </div>
-                        <div class="feature-item col-6">
-                            <a href="#" target="_blank">
-                                <img src="{{asset('public/assets/img/svg/contact-us.svg')}}">
-                            </a>
-                            <p>پشتیبانی 24 ساعته</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="widget-suggestion widget card">
-                    <header class="card-header">
-                        <h3 class="card-title">پیشنهاد لحظه ای</h3>
-                    </header>
-                    <div id="progressBar">
-                        <div class="slide-progress"></div>
-                    </div>
-                    <div id="suggestion-slider" class="owl-carousel owl-theme">
-                        @foreach(\App\Special::query()->where('expire','>',time())->get() as $item)
-                            <div class="item">
-                                <a href="{{route('main.product.show',['slug'=>$item->product->slug])}}">
-                                    <img src="{{(new \App\PublicModel())->image_cover($item->product)}}" class="w-100"
-                                         alt="">
-                                </a>
-                                <h3 class="product-title">
-                                    <a href="{{route('main.product.show',['slug'=>$item->product->slug])}}"> {{$item->product->name}} </a>
-                                </h3>
-                                <div class="price">
-                                    <span class="amount">{{number_format($item->product->price_main-$item->product->price_off)}}<span>تومان</span></span>
+                            <p class="post-title small">
+                                <a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C">سامسونگ Galaxy A72 دو سیم کارت 128 گیگابایتی</a>
+                            </p>
+                            <div class="price">
+                                <div class="text-center">
+                                    <ins><span>13,320,000<span>تومان</span></span></ins>
                                 </div>
+
+
                             </div>
-                        @endforeach
-
-                    </div>
-                </div>
-
-            </div>
-        </aside>
-        <div class="col-12 col-lg-9 order-1 order-lg-2">
-            <div class="row">
-
-                <div class="widget widget-product card">
-                    <header class="card-header">
-                        <h3 class="card-title">
-                            <span>{{$category->name}}</span>
-                        </h3>
-
-                    </header>
+                            <div class="btn-group">
+                                <a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C"><button type="button" class="btn btn-success" style="margin-right: 25%">مشاهده کلی</button>
+                                </a></div><a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C">
+                            </a></div><a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C">
+                        </a></div><a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C">
+                    </a></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">تعداد سیم کارت</span>
+                </td>
 
 
-                </div>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        دو سیم کارت ( نانو )
+                    </label>
+                </td>
 
-                <div class="listing default" style="margin: 5px;">
-                   @if($category->parent_id!=0)
-                    <div class="listing-header default">
-                        <ul class="listing-sort nav nav-tabs justify-content-center" role="tablist"
-                            data-label="مرتب‌ سازی بر اساس :">
-
-                            <li>
-                                <a @if($filter=='view') class="active" @endif href=""
-                                   data-toggle="tab"
-                                   onclick="window.location.href='{{route('category.show.filter',['name'=>$category->name,'filter'=>'view'])}}'"
-                                   role="tab"
-                                   aria-expanded="false">پربازدیدترین</a>
-                            </li>
-                            <li>
-                                <a @if($filter=='new') class="active" @endif data-toggle="tab" href="?filter=view"
-                                   onclick="window.location.href='{{route('category.show.filter',['name'=>$category->name,'filter'=>'new'])}}'"
-                                   role="tab" aria-expanded="true">جدیدترین</a>
-                            </li>
-
-                            <li>
-                                <a @if($filter=='ex') class="active" @endif data-toggle="tab" href="?filter=ex"
-                                   onclick="window.location.href='{{route('category.show.filter',['name'=>$category->name,'filter'=>'ex'])}}'"
-                                   role="tab"
-                                   aria-expanded="false">ارزان‌ترین</a>
-                            </li>
-                            <li>
-                                <a @if($filter=='ch') class="active" @endif data-toggle="tab" href="?filter=ch"
-                                   onclick="window.location.href='{{route('category.show.filter',['name'=>$category->name,'filter'=>'ch'])}}'"
-                                   role="tab"
-                                   aria-expanded="false">گران‌ترین</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tab-content default text-center">
-                        <div class="tab-pane active" id="related" role="tabpanel" aria-expanded="true">
-                            <div class="container no-padding-right">
-                                <ul class="row listing-items">
-                                    <?php  $index = 0;
-                                    ?>
-                                    @if($select=='on')
-                                        @if(count($products)>0)
-                                            @foreach($products as $product)
-                                                @if((new \App\Model\ProductModel($product->id))->count()>0)
-                                                    @include('front.show_product_box')
-                                                    <?php  $index++;?>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    @else
-                                        <?php $index = 0;?>
-                                        @foreach($products as $product)
-                                            @include('front.show_product_box')
-                                            <?php  $index++;?>
-
-                                        @endforeach
-                                    @endif
-
-                                    @if($index<1)
-                                        <h3>
-                                            هیچ کالایی یافت نشد!
-                                        </h3>
-                                        <img src="{{url('public')}}/404.png">
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="pager default text-center">
-                        <input type="hidden" id="itemindex" value="{{$index}}">
-                        {{$products->links()}}
-                    </div>
-                       @else
-                        <div class="tab-content default text-center" >
-                            <div class="tab-pane active" id="related" role="tabpanel" aria-expanded="true" >
-                                <div class="container no-padding-right" >
-                                    <ul class="row listing-items">
-                                        <div class="widget widget-product card " style="max-width: 200px;">
-                                            <header class="card-header">
-
-                                                <a href=""><i class="fa fa-remove"></i></a></header>
-                                            <div class="item">
-                                                <a href="">
-                                                    <img style="max-height: 200px" src="" class="img-fluid" alt="">
-                                                </a>
-                                                <p class="post-title small">
-                                                    <a href="">44</a>
-                                                </p>
-                                                <div class="price">
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">تراشه پردازنده</span>
+                </td>
 
 
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Qualcomm SM7125 Snapdragon 720G (8 nm)
+                    </label>
+                </td>
 
-                                                </div>
-                                                <div class="btn-group">
-                                                    <button id="fastmode-load" onclick="loadproduct('سامسونگ_Galaxy_Z_Fold_2_5G_دو_سیم_کارت_256_گیگابایتی')" type="button" class="btn btn-info" style="margin-right: 25%">مشاهده کلی</button>
-
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">پردازنده مرکزی</span>
+                </td>
 
 
-                    @endif
-                </div>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Octa-core (2x2.3 GHz Kryo 465 Gold &amp; 6x1.8 GHz Kryo 465 Silver)
+                    </label>
+                </td>
 
-            </div>
-        </div>
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">پردازنده گرافیکی</span>
+                </td>
 
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Adreno 618
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">حافظه داخلی</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        128 گیگابایت
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">حافظه موقت ( RAM )</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        6 گیگابایت
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">نوع صفحه نمایش</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Super AMOLED
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">اندازه صفحه نمایش</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        6.7 اینچ
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">رزولوشن صفحه نمایش</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        2400 × 1080 پیکسل
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">تعداد رنگ صفحه نمایش</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        16 میلیون رنگ
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">شبکه اینترنتی 2G</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        GSM 850 / 900 / 1800 / 1900
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">شبکه اینترنتی 3G</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        HSDPA 850 / 900 / 1700(AWS) / 1900 / 2100
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">شبکه اینترنتی 4G</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        LTE
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">رزولوشن عکس دوربین</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        64 + 8 + 12 + 5 مگاپیکسل
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">فلش دوربین</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        دارد
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">رزولوشن فیلمبرداری</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        فیلم برداری 4K با سرعت 30 فریم در ثانیه
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">رزولوشن عکس دوربین سلفی</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        32 مگاپیکسل
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">بلندگو</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        دارد
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">جک 3.5 میلی‌متری</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        دارد
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">سیستم عامل</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        دارد
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">نسخه سیستم عامل</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        11.0
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">پشتیبانی از زبان فارسی</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        دارد
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">باتری قابل تعویض</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        ندارد
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">مشخصات باتری</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        لیتیوم یونی 5000 میلی‌آمپر
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">پشتیبانی از کارت حافظه جانبی</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        دارد
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">حسگر</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        اثرانگشت ، شتاب سنج ، ژیروسکوپ ، مجاورت ، قطب نما
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">تراکم پیکسلی</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        394 پیکسل بر اینچ
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">Wi-Fi</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        دارد
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">بلوتوث</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        نسخه 5.0
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">فناوری‌های مکان‌یابی</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        دارد
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">پورت USB</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Type-C 2.0
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span style="background-color: #9f9f9f" class="block badge">رابط کاربری</span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        One UI 3.1
+                    </label>
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
     </div>
-
-    <script>
-        function selectradio(value) {
-            var select = 'off';
-            if (value.checked)
-                @if(!isset($_GET['page']))
-                    window.location.href = '{{route('category.show',['name'=>(new \App\PublicModel())->slug_format($category->name)])}}?select=' + 'on';
-            @else
-                window.location.href = window.location.href + '&&select=' + 'on';
-            @endif
-        else
-            window.location.href = '{{route('category.show',['name'=>(new \App\PublicModel())->slug_format($category->name)])}}';
-
-
-        }
-
-    </script>
-
 
 
 @endsection
 
 @section('js')
     @include('sub.js')
-    <script>
 
-        setout();
-
-        function price_filter() {
-
-            var output_low = document.getElementById("demo_low");
-            var output_high = document.getElementById("demo_high");
-            var high = document.getElementById('price_high');
-            var low = document.getElementById('price_low');
-            setout();
-            $(document).ready(function () {
-                for (var i = 0; i < document.getElementById('itemindex').value; i++) {
-                    var docs = document.getElementById('item' + i);
-                    var value = docs.getAttribute('data-price');
-                    if (value >= low.value * 100000 && value <= high.value * 100000) {
-                        docs.style.display = '';
-                    } else {
-                        docs.style.display = 'none';
-                    }
-                }
-
-
-            });
-
-        }
-
-        function formatNumber(num) {
-            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-        }
-
-        function setout() {
-            var output_low = document.getElementById("demo_low");
-            var output_high = document.getElementById("demo_high");
-            var high = document.getElementById('price_high');
-            var low = document.getElementById('price_low');
-            output_high.innerHTML = formatNumber(high.value * 100000) + ' تومان ';
-            output_low.innerHTML = formatNumber(low.value * 100000) + ' تومان ';
-        }
-
-        setout();
-    </script>
 @endsection
 
