@@ -19,30 +19,32 @@
             <tr>
 
                 <th>
+                    @foreach(session('compare') as $product)
                     <div class="widget widget-product card " style="max-width: 200px;">
                         <header class="card-header">
 
-                            <a href="https://khanehmobile.com/compare/delete/2356"><i class="fa fa-remove"></i></a></header>
+                            <a href="{{route('main.compare.delete',['product_id'=>$product->id])}}">
+                            <i class="fa fa-remove"></i>
+                            </a>
+                        </header>
                         <div class="item">
-                            <a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C">
-                                <img style="max-height: 200px" src="/public/img/p/1/2/3/9/7/12397.jpg" class="img-fluid" alt="">
+                            <a href="{{route('main.product.show',['slug'=>$item->product->slug])}}">
+                                <img style="max-height: 200px" src="{{(new \App\PublicModel())->image_cover($item->product)}}" class="img-fluid" alt="">
                             </a>
                             <p class="post-title small">
-                                <a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C">سامسونگ Galaxy A72 دو سیم کارت 128 گیگابایتی</a>
+                                <a href="{{route('main.product.show',['slug'=>$item->product->slug])}}">{{$product->name}}</a>
                             </p>
-                            <div class="price">
-                                <div class="text-center">
-                                    <ins><span>13,320,000<span>تومان</span></span></ins>
-                                </div>
 
-
-                            </div>
                             <div class="btn-group">
-                                <a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C"><button type="button" class="btn btn-success" style="margin-right: 25%">مشاهده کلی</button>
-                                </a></div><a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C">
-                            </a></div><a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C">
-                        </a></div><a href="https://khanehmobile.com/product/%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF_Galaxy_A72_%D8%AF%D9%88_%D8%B3%DB%8C%D9%85_%DA%A9%D8%A7%D8%B1%D8%AA_128_%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA%DB%8C">
-                    </a></th>
+                                <a href="{{route('main.product.show',['slug'=>$item->product->slug])}}"><button type="button" class="btn btn-info" style="margin-right: 25%">مشاهده </button>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    @endforeach
+                </th>
             </tr>
             </thead>
             <tbody>
