@@ -373,7 +373,12 @@
                             </tr>
                             <tr>
                                 <th>هزینه ارسال</th>
-                                <th>{{App\Cariar::find($order->post_id)->price}}</th>
+                                <th>{{$post->post_price}}</th>
+                            </tr>
+
+                            <tr>
+                                <th>جمع کل پرداختی </th>
+                                <th>{{number_format($order->price+$post_price)}}</th>
                             </tr>
                             </tbody>
                         </table>
@@ -411,9 +416,13 @@
                                 <th>محصول</th>
                                 <th>تعداد</th>
                                 <th>قیمت واحد</th>
-                                <th>ویژگی</th>
-                                <th>قیمت افزوده با توجه به ویژگی</th>
                                 <th>قیمت کل</th>
+                                <th>تخفیف تکی</th>
+                                <th>تخفیف کلی</th>
+                                <th> رنگ</th>
+                                <th> گارانتی</th>
+
+
                             </tr>
 
                             @foreach($order->carts as $cart)
@@ -427,27 +436,41 @@
                                     <td>{{$cart->count}}</td>
 
 
+                                    <td>{{number_format($cart->price_one)}}</td>
                                     <td>{{number_format($cart->price)}}</td>
+                                    <td>{{$cart->price_one_off}}</td>
+                                    <td>{{$cart->price_off}}</td>
+                                    @if(\App\Color::query()->find($cart->color_id)!=null)
+                                        <td>{{\App\Color::query()->find($cart->color_id)->name}}</td>
+                                     @else
+                                        <td>{{\App\Color::query()->find($cart->color_id)->name}}</td>
+                                    @endif
 
-                                    @if($cart->attribute_id==0)
-
-                                        <td>فاقد ویژگی</td>
-                                        <td>0</td>
-                                        <td>{{(\App\Product::query()->find($cart->product_id)->price_main)*$cart->count }}</td>
+                                    @if(\App\Warranty::query()->find($cart->warranty_id)!=null)
+                                        <td>{{\App\Warranty::query()->find($cart->warranty_id)->name}}</td>
                                     @else
-
-                                        <td>
-                                            @foreach((new \App\Attribute_Model($cart->attribute_id))->getAttributeValue() as $attr)
-                                                {{$attr}}-
-                                            @endforeach
-
-                                        </td>
-                                        <td>{{\App\Product_Attribute::query()->find($cart->attribute_id)->price}}</td>
-                                        <td>{{(\App\Product_Attribute::query()->find($cart->attribute_id)->price+\App\Product::query()->find($cart->product_id)->price_main)*$cart->count}}</td>
-
-                                @endif
+                                        <td>{{\App\Warranty::query()->find($cart->warranty_id)->name}}</td>
+                                    @endif
+                                </tr>
 
                             @endforeach
+                            <tr>
+                                <?php $gift=0;
+                                $pp=0; ?>
+                                    @foreach($order->carts as $cart)
+                                        <?php $gift+=$cart->price_off;
+
+                                        ?>
+                                    @endforeach
+                                <td>کل</td>
+                                <td>
+                                    {{number_format($gift)}} تخفیف
+                                </td>
+
+                                <td>
+                                    {{number_format($order->price)}} کل خرید بدون هزینه ارسال
+                                </td>
+                            </tr>
 
 
                             </tbody>
