@@ -84,7 +84,7 @@
                                 ?>
                                     <td>
                                         <label>
-                                            11&nbsp; {{App\PublicModel::feature_value($product->id,$feature->id)}}
+                                           &nbsp; {{App\PublicModel::feature_value($product->id,$feature->id)}}
                                         </label>
                                     </td>
                             @endforeach
