@@ -18,7 +18,7 @@
             <thead>
             <tr>
 
-                <th>
+
                     <?php
                     $product = \App\Product::query()->find(session('compare')[0]);
                     $category = \App\PublicModel::parent($product);
@@ -28,31 +28,35 @@
                         $product = \App\Product::query()->find($pid);
                         $category = \App\PublicModel::parent($product);
                         ?>
-                        <div class="widget widget-product card " style="max-width: 200px;">
-                            <header class="card-header">
 
-                                <a href="{{route('main.compare.delete',['product_id'=>$product->id])}}">
-                                    <i class="fa fa-remove"></i>
-                                </a>
-                            </header>
-                            <div class="item">
-                                <a href="{{route('main.product.show',['slug'=>$product->slug])}}">
-                                    <img style="max-height: 200px" src="{{(new \App\PublicModel())->image_cover($product)}}" class="img-fluid" alt="">
-                                </a>
-                                <p class="post-title small">
-                                    <a href="{{route('main.product.show',['slug'=>$product->slug])}}">{{$product->name}}</a>
-                                </p>
+                        <th>
+                            <div class="widget widget-product card " style="max-width: 200px;">
+                                <header class="card-header">
 
-                                <div class="btn-group">
-                                    <a href="{{route('main.product.show',['slug'=>$product->slug])}}"><button type="button" class="btn btn-info" style="margin-right: 25%">مشاهده </button>
+                                    <a href="{{route('main.compare.delete',['product_id'=>$product->id])}}">
+                                        <i class="fa fa-remove"></i>
                                     </a>
+                                </header>
+                                <div class="item">
+                                    <a href="{{route('main.product.show',['slug'=>$product->slug])}}">
+                                        <img style="max-height: 200px" src="{{(new \App\PublicModel())->image_cover($product)}}" class="img-fluid" alt="">
+                                    </a>
+                                    <p class="post-title small">
+                                        <a href="{{route('main.product.show',['slug'=>$product->slug])}}">{{$product->name}}</a>
+                                    </p>
+
+                                    <div class="btn-group">
+                                        <a href="{{route('main.product.show',['slug'=>$product->slug])}}"><button type="button" class="btn btn-info" style="margin-right: 25%">مشاهده </button>
+                                        </a>
+                                    </div>
+
                                 </div>
 
                             </div>
+                        </th>
 
-                        </div>
                     @endforeach
-                </th>
+
             </tr>
             </thead>
             <tbody>
