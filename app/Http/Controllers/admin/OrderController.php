@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Events\EventOrderSentPost;
 use App\Events\EventPurchase;
 use App\Order;
+use App\PublicModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -65,14 +66,15 @@ class OrderController extends Controller
 
         if ($state == 4) {
 //            dd("پیامک برای اینکه خرید شما بررسی شد و تایید شد");
-            $msg = "سفارش شما، با موفقیت، مورد تایید قرار گرفت";
-            event(new EventPurchase(auth()->user(), $order->price, $order->refrens, $order->tel, $msg));
+            $msg = "مشتری گرامی سفارش شمابه شماره ".$order->refrens."، با موفقیت، در سایت ماکزیمورس مورد تایید قرار گرفت. با تشکر از خرید شما  maximorse.com";
+           // event(new EventPurchase(auth()->user(), $order->price, $order->refrens, $order->tel, $msg));
+            PublicModel::SendSms1($order->tel,$msg);
         } else if ($state == 5) {
             if (isset($_GET['trackPost']))
                 $trackPost = $_GET['trackPost'];
             $msg = "سفارش شما، با موفقیت، ارسال گردید";
 //            dd("خرید شما ارسال گردید کد ارسال مرسوله");
-            event(new EventOrderSentPost(auth()->user(), $trackPost, $order->refrens, $order->tel, $msg));
+            PublicModel::SendSms1($order->tel,$msg);
         }
 
         $order->state_id = $state;
