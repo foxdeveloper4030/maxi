@@ -13,7 +13,7 @@
     var countries=[
         @foreach(\App\Product::all() as $product)
         {{$product->name}},
-        @endif
+        @endforeach
     ];
     function autocomplete(inp, arr) {
         /*the autocomplete function takes two arguments,
