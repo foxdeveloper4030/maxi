@@ -100,7 +100,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-box-row product-box-row-price">
-
+                                                        444444444
                                                        @include('product.price',['product'=>$product])
                                                     </div>
                                                 </div>
