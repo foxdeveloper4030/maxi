@@ -78,7 +78,7 @@ class OrderController extends Controller
             'postcode' => 'required',
             'address1' => 'required',
             'provinceId' => 'required',
-            'cityId' => 'required',
+            'cityId' => 'required|digits_between:1,441',
         ], [
             'firstname.required' => 'نام الزامی است',
             'lastname.required' => 'نام خانوادگی الزامی است',
@@ -86,7 +86,8 @@ class OrderController extends Controller
             'postcode.required' => 'کدپستی الزامی است',
             'address1.required' => 'آدرس الزامی است',
             'provinceId.required' => 'استان الزامی است',
-            'cityId.required' => 'شهر الزامی است'
+            'cityId.required' => 'شهر الزامی است',
+            'cityId.digits_between' => 'شهر الزامی است'
         ]);
 
         if ($request->city == null) {
