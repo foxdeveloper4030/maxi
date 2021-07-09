@@ -68,7 +68,7 @@ class OrderController extends Controller
 //            dd("پیامک برای اینکه خرید شما بررسی شد و تایید شد");
             $msg = "مشتری گرامی سفارش شمابه شماره ".$order->refrens."، با موفقیت، در سایت ماکزیمورس مورد تایید قرار گرفت. با تشکر از خرید شما  maximorse.com";
            // event(new EventPurchase(auth()->user(), $order->price, $order->refrens, $order->tel, $msg));
-            PublicModel::SendSms1($order->tel,$msg);
+            PublicModel::SendSms1($order->tel,json_encode($msg));
         } else if ($state == 5) {
             if (isset($_GET['trackPost']))
                 $trackPost = $_GET['trackPost'];
