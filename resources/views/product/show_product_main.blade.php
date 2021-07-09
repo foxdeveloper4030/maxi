@@ -67,12 +67,12 @@
                             <ul class="gallery-options">
 
                                 <li>
-                                    <a class="add-favorites" href="{{route('main.love.add',[$product->id])}}"><i
+                                    <a class="btn btn-sm" href="{{route('main.love.add',[$product->id])}}"><i
                                             class="fa fa-heart"></i></a>
                                     <span class="tooltip-option">افزودن به علاقمندی</span>
                                 </li>
                                 <li>
-                                    <button class="add-favorites" onclick="compare_add({{$product->id}})"><i
+                                    <button class="btn btn-sm" onclick="compare_add({{$product->id}})"><i
                                             class="fa fa-list"></i></button>
                                     <span class="tooltip-option">افزودن به لیست مقایسه</span>
                                 </li>

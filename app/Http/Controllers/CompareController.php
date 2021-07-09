@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\PublicModel;
 use Illuminate\Http\Request;
 
 class CompareController extends Controller
@@ -15,6 +16,11 @@ class CompareController extends Controller
             $items=array();
         $product=Product::query()->find($product_id);
         $isset=false;
+        if (count($copmares)>0)
+        {
+            if (PublicModel::parent(Product::query()->find($copmares[0]))->id!=PublicModel::parent(Product::query()->find($product_id))->id)
+                return ['state'=>false,'count'=>count($copmares),'message'=>'no'];
+        }
         if (count($copmares)>0)
         foreach ($copmares as $copmare){
             if ($copmare!=$product_id)

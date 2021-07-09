@@ -24,11 +24,18 @@
                             'success'
                         );
                     else
+                        if (data['state']==false&&data['message']=='no')
+                            Swal.fire({
+                                type: 'error',
+                                title: ' ',
+                                text:'امکان مقایسه دو محصول با دسته بندی متفاوت وجود ندارد!',
+                            });
+                        else
                         Swal.fire({
                             type: 'error',
                             title: ' ',
                             text:'خطا در ارتباط با سرور',
-                        })
+                        });
                 });
         });
     }
