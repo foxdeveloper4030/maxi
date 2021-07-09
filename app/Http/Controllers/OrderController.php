@@ -78,7 +78,7 @@ class OrderController extends Controller
             'postcode' => 'required',
             'address1' => 'required',
             'provinceId' => 'required',
-            'cityId' => 'required|digits_between:1,441',
+            'cityId' => 'required|digits_between:1,441|integer',
         ], [
             'firstname.required' => 'نام الزامی است',
             'lastname.required' => 'نام خانوادگی الزامی است',
