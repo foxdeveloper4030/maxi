@@ -373,12 +373,12 @@
                             </tr>
                             <tr>
                                 <th>هزینه ارسال</th>
-                                <th>{{$post->post_price}}</th>
+                                <th>{{$order->post_price}}</th>
                             </tr>
 
                             <tr>
                                 <th>جمع کل پرداختی </th>
-                                <th>{{number_format($order->price+$post_price)}}</th>
+                                <th>{{number_format($order->price+$order->post_price)}}</th>
                             </tr>
                             </tbody>
                         </table>
