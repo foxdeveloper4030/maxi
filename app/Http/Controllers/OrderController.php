@@ -227,10 +227,10 @@ class OrderController extends Controller
 
 
                 $key="8v8AEee8YfZX+wwc1TzfShRgH3O9WOho";
-                $MerchantId="000000140336964";
-                $TerminalId="24095674";
+                $MerchantId="000000140335536";
+                $TerminalId="24092866";
                 //  $Amount=$price; //Rials
-                $Amount=1000;
+                $Amount=$price;
                 $OrderId=$order->id;
                 $LocalDateTime=date("m/d/Y g:i:s a");
                 $ReturnUrl=url('order/pay/result/out');
