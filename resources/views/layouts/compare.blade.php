@@ -51,11 +51,23 @@
             </tr>
             </thead>
             <tbody>
+
             <tr>
                 <td>
                     <span style="background-color: #9f9f9f" class="block badge">تعداد سیم کارت</span>
                 </td>
 
+                <td>
+                    <label>
+                        دو سیم کارت ( نانو )
+                    </label>
+                </td>
+
+                <td>
+                    <label>
+                        دو سیم کارت ( نانو )
+                    </label>
+                </td>
 
             </tr>
             <tr>
