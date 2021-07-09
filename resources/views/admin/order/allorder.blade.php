@@ -102,7 +102,7 @@
                                 <option style="text-align: center" @if($state == '0') selected @endif value="0">همه
                                 </option>
                                 @foreach(\App\OrderState::all() as $order)
-                                    @continue($order->id == 1)
+
                                     <option style="text-align: center" @if($state == $order->id) selected
                                             @endif value="{{$order->id}}">{{$order->name}}</option>
                                 @endforeach

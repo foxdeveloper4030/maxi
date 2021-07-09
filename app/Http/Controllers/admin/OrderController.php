@@ -20,6 +20,7 @@ class OrderController extends Controller
         if ($state == 0 || $state == '') {
             $orders = Order::query()->where('state_id', '!=', 1)->orderByDesc('created_at')->paginate(15);
         } else if ($state >= 1) {
+
             $orders = Order::query()->where('state_id', '=', $state)->orderByDesc('created_at')->paginate(15);
         }
 
