@@ -271,19 +271,7 @@
                 </div>
             </div>
 
-            <div class="row banner-ads">
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="widget widget-banner card">
-                                <a href="{{\App\Banner::query()->find(4)->link}}" target="_blank">
-                                    <img class="img-fluid" src="{{\App\Banner::query()->find(4)->url}}" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
     </div>
