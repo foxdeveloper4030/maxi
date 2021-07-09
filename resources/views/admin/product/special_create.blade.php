@@ -121,7 +121,40 @@
                                 <label>انتخاب تاریخ شمسی با خروجی تایم استمپ </label>
 
                                 <div class="box-body table-responsive no-padding" style="overflow: scroll;height: 200px">
-                                    @include('admin.product.auto')
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        <tr>
+                                            <th>شماره
+                                                <br>
+                                                <input id="id_val" style="width: 70px;" type="text">
+                                                <input   type="button" onclick="ajax_id(document.getElementById('id_val').value)" value="بگرد" class="btn btn-sm btn-success">
+                                            </th>
+                                            <th>نام
+                                                <br>
+                                                <input id="id_name" style="width: 300px;" type="text">
+                                                <input   type="button" onclick="ajax_name(document.getElementById('id_name').value)" value="بگرد" class="btn btn-sm btn-success">
+
+                                            </th>
+
+                                        </tr>
+
+                                        </tbody></table>
+                                    <table class="table table-hover">
+                                        <tbody id="body_val" >
+
+
+                                        @foreach(\App\Product::query()->where('price_main','>',1000)->get() as $product)
+                                            <tr>
+                                                <td>{{$product->id}}</td>
+                                                <td><button type="button" onclick="addspecial('{{$product->name}}','{{$product->id}}','{{$product->price_main}}')"  class="btn btn-success">{{$product->name}}</button></td>
+
+                                            </tr>
+                                        @endforeach
+
+
+                                        </tbody>
+                                    </table>
+
                                 </div>
                                 <!-- /.box -->
                             </div>
