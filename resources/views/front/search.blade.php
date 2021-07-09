@@ -100,7 +100,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-box-row product-box-row-price">
-                                                        444444444
+
                                                        @include('product.price',['product'=>$product])
                                                     </div>
                                                 </div>
@@ -136,14 +136,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="product-box-row product-box-row-price">
-                                                                        <div class="price">
-                                                                            <div class="price-value">
-                                                                                <div class="price-value-wrapper">
-                                                                                    {{number_format($product->price_main)}} <span
-                                                                                            class="price-currency">تومان</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        @include('product.price',['product'=>$product])
                                                                     </div>
                                                                 </div>
                                                             </div>
