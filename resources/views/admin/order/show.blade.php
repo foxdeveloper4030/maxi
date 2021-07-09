@@ -440,6 +440,12 @@
                                     <td>{{number_format($cart->price)}}</td>
                                     <td>{{$cart->price_one_off}}</td>
                                     <td>{{$cart->price_off}}</td>
+                                    @if($cart->color_id!=0)
+                                        <td>{{\App\Color::query()->find($cart->color_id)->name}}</td>
+                                     @else
+                                        <td>-</td>
+                                    @endif
+
 
                                 </tr>
 
