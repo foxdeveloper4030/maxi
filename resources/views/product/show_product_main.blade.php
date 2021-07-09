@@ -71,6 +71,11 @@
                                             class="fa fa-heart"></i></a>
                                     <span class="tooltip-option">افزودن به علاقمندی</span>
                                 </li>
+                                <li>
+                                    <button class="add-favorites" onclick="compare_add({{$product->id}})"><i
+                                            class="fa fa-list"></i></button>
+                                    <span class="tooltip-option">افزودن به لیست مقایسه</span>
+                                </li>
 
                             </ul>
                             <!-- Modal Core -->
@@ -549,6 +554,8 @@
         });//  end of jquery
 
     </script>
+
+    @include('sub.js')
 @endsection
 
 
