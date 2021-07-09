@@ -66,13 +66,13 @@ class OrderController extends Controller
 
         if ($state == 4) {
 //            dd("پیامک برای اینکه خرید شما بررسی شد و تایید شد");
-            $msg = "مشتری گرامی سفارش شمابه شماره ".$order->refrens."، با موفقیت، در سایت ماکزیمورس مورد تایید قرار گرفت. با تشکر از خرید شما  maximorse.com";
+            $msg = "مشتری گرامی سفارش شما به شماره ".$order->refrens."، با موفقیت، در سایت ماکزی مورس مورد تایید قرار گرفت. با تشکر از خرید شما  maximorse.com";
            // event(new EventPurchase(auth()->user(), $order->price, $order->refrens, $order->tel, $msg));
             PublicModel::SendSms1($order->tel,urlencode($msg));
         } else if ($state == 5) {
             if (isset($_GET['trackPost']))
                 $trackPost = $_GET['trackPost'];
-            $msg = "سفارش شما، با موفقیت، ارسال گردید";
+            $msg = "مشتری گرامی سفارش شما به شماره ".$order->refrens." به آدرس گیرنده ارسال شده است. کد پیگیری مرسوله ارسالی  ".$trackPost."  می باشد. با تشکر از انتخاب شما maximorse.com ";
 //            dd("خرید شما ارسال گردید کد ارسال مرسوله");
             PublicModel::SendSms1($order->tel,urlencode($msg));
         }
