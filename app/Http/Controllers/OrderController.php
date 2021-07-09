@@ -88,7 +88,7 @@ class OrderController extends Controller
             'provinceId.required' => 'استان الزامی است',
             'cityId.required' => 'شهر الزامی است',
             'cityId.digits_between' => 'شهر الزامی است',
-            'cityId.integer' => 'شهر الزامی است'
+
         ]);
 
         if ($request->city == null) {
