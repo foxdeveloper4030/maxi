@@ -542,7 +542,7 @@ Route::get('addtocart/{product}',function ($product){
         if (count($product->colors->where('color_id','=',session('color_id')))>0)
         {
 
-            $product_color=$product->colors->where('color_id','=',session('color_id'))->first()->id;
+            $product_color=1;
             $count=$product->colors->where('color_id','=',session('color_id'))->first()->count;
             $price+=$product->colors->where('color_id','=',session('color_id'))->first()->price;
         }
