@@ -328,7 +328,18 @@
 
                                                 <ul class="params-list">
                                                     @foreach($category->feature_category as $feature_cat)
+                                                      <?php
 
+                                                      $isfeature = false;
+                                                      ?>
+                                                          @foreach($feature_cat->features as $feature)
+
+                                                              @if(App\PublicModel::feature_value($product->id,$feature->id)!=" ")
+                                                                  <?php $isfeature=true; ?>
+                                                              @endif
+
+                                                          @endforeach
+                                                      @if($isfeature)
                                                         <hr>
                                                         <div class="badge badge-success">{{$feature_cat->name}}</div>
 
@@ -345,10 +356,10 @@
 
 
                                                                 @endif
-                                                                    <br>:>
+                                                                    <br>
                                                             @endforeach
                                                         </li>
-
+                                                       @endif
 
                                                     @endforeach
                                                 </ul>
