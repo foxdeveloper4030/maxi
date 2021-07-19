@@ -330,7 +330,7 @@
                                                     @foreach($category->feature_category as $feature_cat)
 
                                                         <hr>
-                                                        <div class="badge badge-success">{{$feature_cat->name}}</div>
+                                                        <div class="badge badge-success">{{$feature_cat->name}}41</div>
 
 
                                                         <li>
