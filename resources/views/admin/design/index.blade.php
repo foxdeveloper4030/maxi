@@ -81,6 +81,7 @@
     </div>
 
 </div>
+
 <!-- ./wrapper -->
 @include('admin.layouts.errors_model')
 <!-- jQuery 3 -->
