@@ -256,14 +256,14 @@
                         <div class="col-12 col-lg-6">
                             <div class="widget-banner card">
                                 <a href="{{\App\Banner::query()->find(2)->link}}" target="_blank">
-                                    <img class="img-fluid" src="{{url('')}}/{{\App\Banner::query()->find(2)->url}}" alt="">
+                                    <img class="img-fluid" src="{{url('')}}/{{\App\Banner::query()->find(2)->url}}" alt="{{\App\Banner::query()->find(2)->link}}">
                                 </a>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
                             <div class="widget-banner card">
                                 <a href="{{\App\Banner::query()->find(3)->link}}" target="_top">
-                                    <img class="img-fluid" src="{{\App\Banner::query()->find(3)->url}}" alt="">
+                                    <img class="img-fluid" src="{{\App\Banner::query()->find(3)->url}}" alt="{{\App\Banner::query()->find(3)->title}}">
                                 </a>
                             </div>
                         </div>

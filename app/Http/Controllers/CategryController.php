@@ -133,6 +133,7 @@ class CategryController extends Controller
         $products = array();
         foreach (Product_Slider::query()->where('slider_id', '=', $id)->get() as $product) {
             $p = Product::query()->find($product->product_id);
+            if ($p!=null)
             if ($p->price_main > 1000)
                 array_push($products, $p);
         }
