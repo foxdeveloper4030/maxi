@@ -59,15 +59,39 @@
                                 <small>اسلایدر شماره {{$slider->id}}</small>
                             </h3>
                             <!-- tools box -->
-                            <div class="pull-right box-tools">
-                                <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
-                                        title="Collapse">
-                                    <i class="fa fa-minus"></i></button>
-                                <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
-                                        title="Remove">
-                                    <i class="fa fa-times"></i></button>
-                            </div>
+
                             <!-- /. tools -->
+                        </div>
+                        <div class="box-body">
+                            <form role="form" action="{{route('admin.slider.edite',['id'=>$slider->id])}}" method="post" enctype="multipart/form-data">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">عنوان بنر</label>
+                                        <input value="{{$slider->title}}" required="required" name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="عنوان">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">ارسال عکس اسلایدر</label>
+                                        <img src="{{$slider->url}}">
+                                        <input name="url" required="required" type="file" id="exampleInputFile">
+
+                                        <p class="help-block">اندازه تصویر باید با ارتفاع 350 و عرض 960 پیکسل باشد.</p>
+                                    </div>
+                                    @csrf
+                                </div>
+                                <!-- /.box-body -->
+
+
+
+                                <div class="form-group">
+                                    <label for="exampleInputFile">توضیحات اسلایدر</label>
+                                    <textarea required="required" id="editor1" name="text" rows="10"
+                                              cols="80">{{$slider->text}}</textarea>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">ارسال</button>
+                                </div>
+                            </form>
                         </div>
 
                     </div>
