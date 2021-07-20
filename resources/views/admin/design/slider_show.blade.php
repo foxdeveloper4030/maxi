@@ -43,7 +43,7 @@
 
     @include('admin.layouts.header')
     <div class="content-wrapper">
-        
+
 
         <!-- Main content -->
         <section class="content">
@@ -74,7 +74,7 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title"></h3>
                             </div>
-                            <img src="{{$slider->url}}">
+                            <img src="{{url((''))}}/{{$slider->url}}">
                         </div>
                     </div>
                     <div class="box box-info">
