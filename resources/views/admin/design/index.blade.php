@@ -72,7 +72,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputFile">ارسال عکس اسلایدر</label>
-                                        <img src="{{$slider->url}}">
+                                        <img src="{{url('')}}/{{$slider->url}}">
                                         <input name="url" required="required" type="file" id="exampleInputFile">
 
                                         <p class="help-block">اندازه تصویر باید با ارتفاع 350 و عرض 960 پیکسل باشد.</p>
