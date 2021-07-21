@@ -50,7 +50,7 @@ class SliderController extends Controller
     }
     public function edite($id,Request $request){
         $validatedData = $request->validate([
-            'title' => 'required|unique:sliders',
+            'title' => 'required',
             'link'=>'required',
             'url'=>'image|nullable'
         ],['title.required'=>'عنوان محصول الزامی می باشد!','title.unique'=>'این عنوان قبلا ثبت شد!','url.image'=>'فایل  تصویر نمی باشد!','link.required'=>'لینک وارد نشده است.']);
