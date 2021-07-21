@@ -58,6 +58,7 @@
                             <h3 class="box-title">
                                 <small>اسلایدر شماره {{$slider->id}}</small>
                             </h3>
+                            <a class="btn btn-danger" href="{{route('admin.slider.remove',['id'=>$slider->id])}}"> حذف اسلایدر</a>
                             <!-- tools box -->
 
                             <!-- /. tools -->
@@ -84,9 +85,8 @@
 
 
                                 <div class="form-group">
-                                    <label for="exampleInputFile">توضیحات اسلایدر</label>
-                                    <textarea required="required" id="editor1" name="text" rows="10"
-                                              cols="80">{{$slider->text}}</textarea>
+                                    <label for="exampleInputFile">لینک</label>
+                                    <input required="required" value="{{$slider->link}}"  name="link">
                                 </div>
                                 <div class="box-footer">
                                     <button type="submit" class="btn btn-primary">ارسال</button>
