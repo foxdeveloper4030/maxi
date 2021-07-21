@@ -24,8 +24,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
-
-
 Route::get('/', 'HomeController@index')->name('urlMain');
 
 
@@ -337,6 +335,7 @@ Route::middleware(['admin'])->group(function () {
         Route::post('slider/store', 'admin\SliderController@store')->name('admin.slider.store');
         Route::get('slider/show/{id}', 'admin\SliderController@show')->name('admin.slider.show');
         Route::post('slider/edite/{id}', 'admin\SliderController@edite')->name('admin.slider.edite');
+        Route::get('slider/edite/{id}', 'admin\SliderController@remove')->name('admin.slider.remove');
         //************END BANNERS //////************
 
         //*************SEND  *********************

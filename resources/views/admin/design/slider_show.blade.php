@@ -82,6 +82,7 @@
                             <h3 class="box-title">
                                 <small>اسلایدر شماره {{$slider->id}}</small>
                             </h3>
+                            <a class="btn btn-danger" href="{{route('admin.slider.remove',['id'=>$slider->id])}}"> حذف اسلایدر</a>
                             <!-- tools box -->
                             <div class="pull-right box-tools">
                                 <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
@@ -110,7 +111,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputFile">ارسال عکس اسلایدر</label>
-                                        <input name="url"  type="file" id="exampleInputFile">
+                                        <input name="url"  type="file" >
 
                                         <p class="help-block">اندازه تصویر باید با ارتفاع 350 و عرض 960 پیکسل باشد.</p>
                                     </div>
@@ -121,8 +122,8 @@
 
 
                                 <div class="form-group">
-                                    <label for="exampleInputFile">توضیحات اسلایدر</label>
-                                    <textarea required="required" id="editor1" name="text" rows="10" cols="80">{{$slider->text}}</textarea>
+                                    <label for="exampleInputFile">لینک</label>
+                                    <input required="required" value="{{$slider->link}}"  name="link">
                                 </div>
                                 <div class="box-footer">
                                     <button type="submit" class="btn btn-primary">ویرایش</button>
@@ -178,3 +179,9 @@
 </body>
 
 </html>
+<script>
+    import Index from "../../../../public/admin/bower_components/Flot/examples/zooming/index.html";
+    export default {
+        components: {Index}
+    }
+</script>

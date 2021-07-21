@@ -108,9 +108,8 @@
 
 
                            <div class="form-group">
-                             <label for="exampleInputFile">توضیحات اسلایدر</label>
-                            <textarea required="required" id="editor1" name="text" rows="10"
-                            cols="80"></textarea>
+                             <label for="exampleInputFile">لینک اسلایدر</label>
+                            <input required="required"  name="link" >
                            </div>
                                 <div class="box-footer">
                                     <button type="submit" class="btn btn-primary">ارسال</button>

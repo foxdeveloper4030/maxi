@@ -19,22 +19,23 @@ class SliderController extends Controller
     public function store(Request $request){
         $validatedData = $request->validate([
             'title' => 'required|unique:banners',
-            'text' => 'required',
-            'url'=>'required|image'
-        ],['title.required'=>'عنوان محصول الزامی می باشد!','title.unique'=>'این عنوان قبلا ثبت شد!','url.required'=>'فایل  تصویر الزامی است!!','url.image'=>'فایل  تصویر نمی باشد!']);
+
+            'url'=>'required|image',
+            'link'=>'required'
+        ],['title.required'=>'عنوان محصول الزامی می باشد!','title.unique'=>'این عنوان قبلا ثبت شد!','url.required'=>'فایل  تصویر الزامی است!!','url.image'=>'فایل  تصویر نمی باشد!','link.required'=>'لینک وارد نشده است.']);
          $slider=new Slider();
          $public=new PublicModel();
         $file=$request->file('url');
         $filename=time().$file->getClientOriginalName();
         $file->move('public/assets/img/slider/',$filename);
-
+        $slider->link=$request->link;
         $slider->url='public/assets/img/slider/'.$filename;
          if (true)
          $slider->url='public/assets/img/slider/'.$filename;
          else
              return back();
          $slider->title=$request->title;
-         $slider->text=$request->text;
+
          if ($slider->save()){
 
              session()->flash('alert','<div class="alert alert-success">اسلایدر ذخیره شد</div>');
@@ -49,13 +50,13 @@ class SliderController extends Controller
     }
     public function edite($id,Request $request){
         $validatedData = $request->validate([
-            'title' => 'required|unique:banners',
-            'text' => 'required',
+            'title' => 'required|unique:sliders',
+            'link'=>'required',
             'url'=>'image|nullable'
-        ],['title.required'=>'عنوان محصول الزامی می باشد!','title.unique'=>'این عنوان قبلا ثبت شد!','url.image'=>'فایل  تصویر نمی باشد!']);
+        ],['title.required'=>'عنوان محصول الزامی می باشد!','title.unique'=>'این عنوان قبلا ثبت شد!','url.image'=>'فایل  تصویر نمی باشد!','link.required'=>'لینک وارد نشده است.']);
      $slider=Slider::query()->find($id);
+     $slider->link=$request->link;
      $slider->title=$request->title;
-     $slider->text=$request->text;
      $public=new PublicModel();
      if (isset($request->url))
      {
@@ -74,6 +75,10 @@ class SliderController extends Controller
             return redirect(route('admin.slider.show',['id'=>$slider->id]));
      }
         session()->flash('alert','<div class="alert alert-danger">خطا در ارتباط با سرور</div>');
+        return back();
+    }
+    public function remove($id){
+        Slider::query()->find($id)->delete();
         return back();
     }
 }
