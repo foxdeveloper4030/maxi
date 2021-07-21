@@ -98,7 +98,7 @@
                     <?php  $slidindex=0 ?>
                     @foreach(\App\Slider::all() as $slider)
                     <div class="carousel-item @if($slidindex==0) active <?php $slidindex=1; ?> @endif">
-                        <a class="d-block" href="{{route('slider.show',['id'=>$slider->id])}}">
+                        <a class="d-block" href="{{$slider->link}}">
                             <img src="{{$slider->url}}"
                                  class="d-block w-100" alt="">
                         </a>

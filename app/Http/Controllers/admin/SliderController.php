@@ -78,6 +78,9 @@ class SliderController extends Controller
         return back();
     }
     public function remove($id){
+        $slider=Slider::query()->find($id);
+        if (file_exists($slider->url))
+            unlink($slider->url);
         Slider::query()->find($id)->delete();
         return back();
     }
