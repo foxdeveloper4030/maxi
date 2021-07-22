@@ -35,9 +35,11 @@
                                 </div>
                                 <hr>
                                 <div style="margin: 5px">
-                                    <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">44</span>
-                                    <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">44</span>
-                                    <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">44</span>
+                                    @foreach(\App\Product::query()->orderBy('view')->limit(10)->get() as $product)
+                                    <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">
+                                        {{$product->name}}
+                                    </span>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
