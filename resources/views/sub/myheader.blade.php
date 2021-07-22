@@ -29,7 +29,7 @@
                                 </div>
                                 <hr>
                                 <div style="margin: 5px">
-                                    @foreach(\App\Category::query()->orderBy('seen')->limit(10)->get() as $category)
+                                    @foreach(\App\Category::query()->orderByDesc('seen')->limit(10)->get() as $category)
                                         <span class="badge" style="border: 1px solid #f44336;background-color: #e7e4e4">
                                         {{$category->name}}
                                     </span>
