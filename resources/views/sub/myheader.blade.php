@@ -23,8 +23,22 @@
                                 onclick="window.location.href='{{url('')}}/search/'+document.getElementById('gsearchsimple').value">
                             <img src="{{asset('public/assets/img/search.png')}}" alt=""></button>
                         <div class="overlay-search-box">
-                            <div style="background-color: white;height: 200px;border: 1px solid #f44336;border-radius: 20px;padding: 10px;" >
-                                <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">44</span>
+                            <div style="background-color: white;height: 200px;border: 1px solid #f44336;border-radius: 20px;padding: 10px;overflow: scroll" >
+                                <div id="search-result" style="margin: 5px;">
+
+                                </div>
+                                <hr>
+                                <div style="margin: 5px">
+                                    <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">44</span>
+                                    <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">44</span>
+                                    <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">44</span>
+                                </div>
+                                <hr>
+                                <div style="margin: 5px">
+                                    <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">44</span>
+                                    <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">44</span>
+                                    <span class="badge" style="border: 1px solid #f44336;background-color: #dcdada">44</span>
+                                </div>
                             </div>
                         </div>
                     </form>
