@@ -28,21 +28,27 @@
 
                                 </div>
                                 <hr>
-                                <p><small>پر جستجوترین</small><i class="fa fa-fire"></i></p>
+                                <p><small>پر جستجوترین</small> <i class="fa fa-fire"></i> </p>
                                 <div style="margin: 5px">
                                     @foreach(\App\Category::query()->orderByDesc('seen')->limit(10)->get() as $category)
-                                        <span class="badge" style="border: 1px solid #f44336;background-color: #e7e4e4">
-                                        {{$category->name}}
-                                    </span>
+
+                                        <a style="display: inline" href="{{route('category.show',['name'=>$category->name])}}">
+                                             <span class="badge" style="border: 1px solid #f44336;background-color: #e7e4e4">
+                                                {{$category->name}}
+                                             </span>
+                                        </a>
+
                                     @endforeach
                                 </div>
                                 <hr>
                                 <div style="margin: 5px">
 
                                     @foreach(\App\Product::query()->orderByDesc('view')->limit(10)->get() as $product)
-                                    <span class="badge" style="border: 1px solid #f44336;background-color: #e7e4e4">
-                                        {{$product->name}}
-                                    </span>
+                                        <a style="display: inline" href="{{route('main.product.show',['slug'=>$product->slug])}}">
+                                             <span class="badge" style="border: 1px solid #f44336;background-color: #e7e4e4">
+                                                 {{$product->name}}
+                                             </span>
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>
