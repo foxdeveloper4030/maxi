@@ -24,6 +24,11 @@
                             <img src="{{asset('public/assets/img/search.png')}}" alt=""></button>
                     </form>
                 </div>
+                <div class="overlay-search-box">
+                    <div style="background-color: red">
+                        4444
+                    </div>
+                </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="user-login dropdown">
@@ -164,8 +169,4 @@ background: linear-gradient(90deg, rgba(0,159,255,1) 2%, rgba(9,15,121,0.9247898
 </header>
 <!-- Modal -->
 
-<div class="overlay-search-box">
-    <div style="background-color: red">
-        4444
-    </div>
-</div>
+
