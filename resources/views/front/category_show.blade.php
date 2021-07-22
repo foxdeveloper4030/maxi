@@ -2,12 +2,17 @@
 @section('meta')
     <meta name="description" content="">
     <meta name="keywords" content="MediaCenter, Template, eCommerce">
+<?php
 
+$category->seen=$category->seen+1;
+$category->save();
+
+?>
 
 @endsection
 
 @section('title')
-    خانه
+{{$category->name}}
 @endsection
 @section('content')
 
