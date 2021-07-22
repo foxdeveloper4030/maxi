@@ -100,7 +100,7 @@
                     <div class="carousel-item @if($slidindex==0) active <?php $slidindex=1; ?> @endif">
                         <a class="d-block" href="{{$slider->link}}">
                             <img src="{{$slider->url}}"
-                                 class="d-block w-100" alt="">
+                                 class="d-block w-100" alt="{{$slider->title}}">
                         </a>
                     </div>
                     @endforeach
@@ -276,7 +276,7 @@
         </div>
     </div>
     @php($brands=\App\Brand::all())
-    @includeIf('sub.brands')
+
 <script>
 
     function csss(){

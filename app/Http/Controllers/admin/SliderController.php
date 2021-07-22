@@ -72,7 +72,7 @@ class SliderController extends Controller
      if ($slider->save()){
 
             session()->flash('alert','<div class="alert alert-success">اسلایدر ذخیره شد</div>');
-            return redirect(route('admin.slider.show',['id'=>$slider->id]));
+            return back();
      }
         session()->flash('alert','<div class="alert alert-danger">خطا در ارتباط با سرور</div>');
         return back();
