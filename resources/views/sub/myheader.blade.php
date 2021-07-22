@@ -22,13 +22,14 @@
                         <button type="button"
                                 onclick="window.location.href='{{url('')}}/search/'+document.getElementById('gsearchsimple').value">
                             <img src="{{asset('public/assets/img/search.png')}}" alt=""></button>
+                        <div class="overlay-search-box">
+                            <div style="background-color: red">
+                                4444
+                            </div>
+                        </div>
                     </form>
                 </div>
-                <div class="overlay-search-box">
-                    <div style="background-color: red">
-                        4444
-                    </div>
-                </div>
+
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="user-login dropdown">
