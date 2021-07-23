@@ -13,8 +13,8 @@
             </button>
             <div class="search-nav default">
                 <form action="">
-                    <input type="text" placeholder="جستجو ...">
-                    <button type="submit"><img src="{{asset('public/assets/img/search.png')}}" alt=""></button>
+                    <input type="text" id="gsearchsimple" placeholder="جستجو ...">
+                    <button type="button" onclick="window.location.href='{{url('')}}/search/'+document.getElementById('gsearchsimple').value"><img src="{{asset('public/assets/img/search.png')}}" alt=""></button>
                 </form>
                 <ul>
                     <li><a type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-user"><i class="now-ui-icons users_single-02"></i></a>
