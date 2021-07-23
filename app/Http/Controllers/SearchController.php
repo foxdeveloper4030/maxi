@@ -9,18 +9,22 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     public function search($name){
-        $products=Product::query()->orWhere('name', 'like', '%' . $name . '%')->Where('price_main','>',1000);
+        $cats=[];
         $categories=Category::query()->orWhere('name', 'like', '%' . $name . '%');
         foreach ($categories->get() as $category){
 
             if ($category->parent_id==0){
-               foreach ($category->childs as $child){
-                   $products->addBinding($child->products);
-               }
+                foreach ($category->childs as $child){
+                    array_push($cats,$child->id);
+                }
             }
             else
-                $products->addBinding($category->products);
+                array_push($cats,$category->id);
         }
+
+        $products=Product::query()->orWhere('name', 'like', '%' . $name . '%')->orWhereIn('category_id',$cats)->Where('price_main','>',1000);
+
+
        // $products->addBinding(Product::query()->orWhere('name', 'like', '%موبایل%')->Where('price_main','>',1000));
        $count=count($products->get());
 
