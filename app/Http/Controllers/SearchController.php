@@ -15,7 +15,7 @@ class SearchController extends Controller
 
       if (isset($_GET['result'])){
           $products=$products->where('name','like','%'.$_GET['result'].'%');
-          foreach ($categories as $category){
+          foreach ($categories->get() as $category){
               $products->addBinding($category->products);
           }
           $count=count($products->get());
