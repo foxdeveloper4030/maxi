@@ -23,7 +23,7 @@
                     <li><a href="{{route('main.show.cart')}}"><i class="now-ui-icons shopping_basket"></i></a></li>
                 </ul>
             </div>
-            <div class="overlay-search-box">
+            <div class="overlay-search-box" style="top: 75px !important;">
                 <div style="background-color: red">
                     4444
                 </div>
