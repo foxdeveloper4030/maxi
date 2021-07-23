@@ -12,12 +12,12 @@ class SearchController extends Controller
         $products=Product::query()->orWhere('name', 'like', '%' . $name . '%')->Where('price_main','>',1000);
        $count=count(Product::query()->orWhere('name', 'like', '%' . $name . '%')->Where('price_main','>',1000)->get());
        $categories=Category::query()->orWhere('name', 'like', '%' . $name . '%');
-return $categories->get();
+        foreach ($categories->get() as $category){
+            $products->addBinding($category->products);
+        }
       if (isset($_GET['result'])){
           $products=$products->where('name','like','%'.$_GET['result'].'%');
-          foreach ($categories->get() as $category){
-              $products->addBinding($category->products);
-          }
+
           $count=count($products->get());
 
       }
