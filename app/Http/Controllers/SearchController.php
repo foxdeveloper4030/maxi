@@ -21,6 +21,7 @@ class SearchController extends Controller
             else
                 $products->addBinding($category->products);
         }
+        $products->addBinding(Product::query()->orWhere('name', 'like', '%موبایل%')->Where('price_main','>',1000));
        $count=count($products->get());
 
       if (isset($_GET['result'])){
