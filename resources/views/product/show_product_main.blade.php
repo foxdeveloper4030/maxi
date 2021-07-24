@@ -349,8 +349,11 @@
 
                                                                 @if(App\PublicModel::feature_value($product->id,$feature->id)!=" ")
                                                                     <div class="params-list-key">
-                                                                        <span class="inline"><i class="fa fa-check-square"></i> {{$feature->feature}}:
-                                                                        {{App\PublicModel::feature_value($product->id,$feature->id)}}
+                                                                        <span class="inline"> {{$feature->feature}}:
+
+                                                                        </span>
+                                                                        <span style="background-color: grey" class="inline"> {{App\PublicModel::feature_value($product->id,$feature->id)}}
+
                                                                         </span>
 
                                                                     </div>
