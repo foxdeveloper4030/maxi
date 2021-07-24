@@ -24,8 +24,39 @@
                             <img src="{{asset('public/assets/img/search.png')}}" alt=""></button>
 
                     </form>
-                </div>
 
+                </div>
+                <div class="overlay-search-box">
+                    <div style="background-color: white;height: 200px;border: 1px solid #f44336;border-radius: 20px;padding: 10px;overflow-y: scroll" >
+                        <div id="search-result" style="margin: 5px;">
+
+                        </div>
+                        <hr>
+                        <p><small>پر جستجوترین</small> <i class="fa fa-fire"></i> </p>
+                        <div style="margin: 5px">
+                            @foreach(\App\Category::query()->orderByDesc('seen')->limit(10)->get() as $category)
+
+                                <a style="display: inline" href="{{route('category.show',['name'=>$category->name])}}">
+                                             <span class="badge" style="border: 1px solid #f44336;background-color: #e7e4e4">
+                                                {{$category->name}}
+                                             </span>
+                                </a>
+
+                            @endforeach
+                        </div>
+                        <hr>
+                        <div style="margin: 5px">
+
+                            @foreach(\App\Product::query()->orderByDesc('view')->limit(10)->get() as $product)
+                                <a style="display: inline" href="{{route('main.product.show',['slug'=>$product->slug])}}">
+                                             <span class="badge" style="border: 1px solid #f44336;background-color: #e7e4e4">
+                                                 {{$product->name}}
+                                             </span>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="user-login dropdown">
@@ -166,34 +197,4 @@ background: linear-gradient(90deg, rgba(0,159,255,1) 2%, rgba(9,15,121,0.9247898
 </header>
 <!-- Modal -->
 
-<div class="overlay-search-box">
-    <div style="background-color: white;height: 200px;border: 1px solid #f44336;border-radius: 20px;padding: 10px;overflow-y: scroll" >
-        <div id="search-result" style="margin: 5px;">
 
-        </div>
-        <hr>
-        <p><small>پر جستجوترین</small> <i class="fa fa-fire"></i> </p>
-        <div style="margin: 5px">
-            @foreach(\App\Category::query()->orderByDesc('seen')->limit(10)->get() as $category)
-
-                <a style="display: inline" href="{{route('category.show',['name'=>$category->name])}}">
-                                             <span class="badge" style="border: 1px solid #f44336;background-color: #e7e4e4">
-                                                {{$category->name}}
-                                             </span>
-                </a>
-
-            @endforeach
-        </div>
-        <hr>
-        <div style="margin: 5px">
-
-            @foreach(\App\Product::query()->orderByDesc('view')->limit(10)->get() as $product)
-                <a style="display: inline" href="{{route('main.product.show',['slug'=>$product->slug])}}">
-                                             <span class="badge" style="border: 1px solid #f44336;background-color: #e7e4e4">
-                                                 {{$product->name}}
-                                             </span>
-                </a>
-            @endforeach
-        </div>
-    </div>
-</div>
