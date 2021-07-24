@@ -351,13 +351,13 @@
                                                                     @if(App\PublicModel::feature_value($product->id,$feature->id)!=" ")
 
                                                                         <tr>
-                                                                            <td>{{$feature->feature}}</td>
-                                                                            <td>{{App\PublicModel::feature_value($product->id,$feature->id)}}</td>
+                                                                            <td style="margin: 10px;background-color: #d0cdcd;">{{$feature->feature}}</td>
+                                                                            <td style="margin: 10px;background-color: #a5a4a4;">{{App\PublicModel::feature_value($product->id,$feature->id)}}</td>
 
                                                                         </tr>
 
                                                                     @endif
-                                                                    <br>
+
                                                                 @endforeach
                                                             </table>
 
