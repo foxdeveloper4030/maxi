@@ -1,7 +1,7 @@
 <nav class="navbar direction-ltr fixed-top header-responsive">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="#pablo">
+            <a class="navbar-brand" href="{{url('')}}">
                 <img src="{{asset('public/assets/img/logo.jpg')}}" height="24px" alt="">
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -13,7 +13,7 @@
             </button>
             <div class="search-nav default">
                 <form action="">
-                    <input type="text" id="gsearchsimple" placeholder="جستجو ...">
+                    <input type="text"  placeholder="جستجو ...">
                     <button type="button" onclick="window.location.href='{{url('')}}/search/'+document.getElementById('gsearchsimple').value"><img src="{{asset('public/assets/img/search.png')}}" alt=""></button>
                 </form>
                 <ul>
