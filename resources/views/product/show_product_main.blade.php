@@ -345,24 +345,22 @@
 
 
                                                         <li>
-                                                            @foreach($feature_cat->features as $feature)
+                                                            <table>
+                                                                @foreach($feature_cat->features as $feature)
 
-                                                                @if(App\PublicModel::feature_value($product->id,$feature->id)!=" ")
-                                                                    <div class="params-list-key">
-                                                                        <span class="inline"> {{$feature->feature}}:
+                                                                    @if(App\PublicModel::feature_value($product->id,$feature->id)!=" ")
 
-                                                                        </span>
-                                                                        <span style="background-color: grey" class="inline"> {{App\PublicModel::feature_value($product->id,$feature->id)}}
+                                                                        <tr>
+                                                                            <td>{{$feature->feature}}</td>
+                                                                            <td>{{App\PublicModel::feature_value($product->id,$feature->id)}}</td>
 
-                                                                        </span>
+                                                                        </tr>
 
-                                                                    </div>
-
-
-
-                                                                @endif
+                                                                    @endif
                                                                     <br>
-                                                            @endforeach
+                                                                @endforeach
+                                                            </table>
+
                                                         </li>
                                                        @endif
 
