@@ -327,6 +327,7 @@
         });
     }
 
+
     function maincart(id, attr_id) {
         $(document).ready(function () {
             loader_show();
@@ -428,6 +429,17 @@
 
 
     });//  end of jquery
+
+
+    function searchp(q) {
+        $(document).ready(function () {
+            loader_show();
+            $.get("{{route('main.search.ajax')}}/"+q,
+                function (data, status) {
+                    document.getElementById('search-result').innerHTML=data;
+                });
+        });
+    }
 </script>
 
 @yield('js')

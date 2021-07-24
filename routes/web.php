@@ -709,6 +709,9 @@ Route::middleware(['order'])->group(function () {
 
 //************************************SEARCH PRODUCT  ***********************
 Route::get('search/{name}', 'SearchController@search')->name('main.search');
+
+Route::get('search/s/', 'SearchController@ajax_search')->name('main.search.ajax');
+Route::get('search/s/{q}', 'SearchController@ajax_search');
 //************************************END SEARCH PRODUCT  ***********************
 
 //************************************USERS ************************

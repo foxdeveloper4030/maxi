@@ -43,4 +43,10 @@ class SearchController extends Controller
         return view('front.search',['select'=>$select,'products'=>$products->paginate(20),'count'=>$count,'text'=>$name]);
 
     }
+
+    public function ajax_search($q){
+        $products=Product::query()->orWhere('name', 'like', '%' . $q . '%')->orWhere('title', 'like', '%' . $q . '%')->orWhere('id', 'like', '%' . $q . '%');
+       $arr=[];
+        return view('search',['products'=>$products->get()]);
+    }
 }

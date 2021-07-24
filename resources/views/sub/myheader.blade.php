@@ -15,7 +15,7 @@
             <div class="col-lg-6 col-md-5 col-sm-8 col-7">
                 <div class="search-area default">
                     <form action="" class="search">
-                        <input type="text" id="gsearchsimple"
+                        <input onchange="searchp(this.value)" type="text" id="gsearchsimple"
                                placeholder="نام کالا، برند و یا دسته مورد نظر خود را جستجو کنید…">
 
                         <div class="localSearchSimple"></div>
