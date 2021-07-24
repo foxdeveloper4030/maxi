@@ -345,20 +345,23 @@
 
 
                                                         <li>
-                                                            <table class="table table-borderless">
+                                                            <table class="table table-bordered">
+                                                                <thead>
                                                                 @foreach($feature_cat->features as $feature)
 
                                                                     @if(App\PublicModel::feature_value($product->id,$feature->id)!=" ")
 
                                                                         <tr style="margin: 10px">
-                                                                            <td style="margin: 10px;background-color: #d0cdcd;">{{$feature->feature}}</td>
-                                                                            <td style="margin: 10px;background-color: #a5a4a4;">{{App\PublicModel::feature_value($product->id,$feature->id)}}</td>
+                                                                            <th style="margin: 10px;background-color: #d0cdcd;">{{$feature->feature}}</th>
+                                                                            <th style="margin: 10px;background-color: #a5a4a4;">{{App\PublicModel::feature_value($product->id,$feature->id)}}</th>
 
                                                                         </tr>
 
                                                                     @endif
 
                                                                 @endforeach
+                                                                </thead>
+
                                                             </table>
 
                                                         </li>
